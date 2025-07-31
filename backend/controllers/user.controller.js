@@ -2,6 +2,7 @@ import User from "../models/user.model.js";
 import Profile from "../models/profile.model.js";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
+import { error } from "console";
 
 // for signin/register
 export const register = async (req, res) => {
@@ -67,17 +68,60 @@ export const uploadProfilePicture = async (req, res) => {
   const { token } = req.body;
 
   try {
-
     const user = await User.findOne({ token: token });
-    if(!user){
-      return res.status(404).json({message:"your not found"})
+    if (!user) {
+      return res.status(404).json({ message: "your not found" });
     }
     user.profilePicture = req.file.filename;
     await user.save();
 
-    return res.json({message:"profile picture uploaded"});
-
+    return res.json({ message: "profile picture uploaded" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+
+// update user profile route
+export const updateUserProfile = async (req, res) => {
+  try {
+    const { token, ...newUser } = req.body;
+
+    const user = User.findOne({ token: token });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const { username, email } = newUser;
+    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+
+    if (existingUser && String(existingUser._id) !== String(user._id)) {
+      return res.status(404).json({ message: "User already exists" });
+    }
+
+    Object.assign(user, newUser);
+    await user.save();
+    return res.json({ message: "User is updated" });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+// to get user profile 
+export const getUserAndProfile = async(req,res)=>{
+  try{
+    const {token} = req.body;
+    const user = await User.findOne({token:token});
+
+    if(!user){
+      return res.status(404).json({message:"User not found"});
+    }
+
+    const userProfile = await Profile.findOne({userId:user._id}).populate( "userId","name email username profilepicture");
+
+    return res.json(userProfile)
+
+  }catch{
+    return res.status(500).json({message:error.message})
+  }
+}
