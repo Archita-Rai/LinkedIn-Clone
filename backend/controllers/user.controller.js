@@ -2,7 +2,35 @@ import User from "../models/user.model.js";
 import Profile from "../models/profile.model.js";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
-import { error } from "console";
+import PDFDocument from "pdfkit";
+import fs from "fs";
+
+//pdf creator function
+const convertUserDataToPDF = async(userData) => {
+  const doc = new PDFDocument();
+  const outputPath = crypto.randomBytes(32).toString("hex") + ".pdf";
+  const stream = fs.createWriteStream("uploads/" + outputPath);
+  doc.pipe(stream);
+  console.log(userData.userId.profilePicture)
+  doc.image(`uploads/${userData.userId.profilePicture}`, {
+    align: "center",
+    width: 100,
+  });
+  doc.fontSize(14).text(`Name: ${userData.userId.name}`);
+  doc.fontSize(14).text(`Username: ${userData.userId.username}`);
+  doc.fontSize(14).text(`Email: ${userData.userId.email}`);
+  doc.fontSize(14).text(`Bio: ${userData.bio}`);
+  doc.fontSize(14).text(`Current Position: ${userData.currentPost}`);
+  doc.fontSize(14).text("Past Work: ");
+  userData.pastWork.forEach((work, index) => {
+    doc.fontSize(14).text(`Company Name: ${work.company}`);
+    doc.fontSize(14).text(`Position: ${work.position}`);
+    doc.fontSize(14).text(`Years: ${work.years}`);
+  });
+  doc.end()
+  
+  return outputPath;
+};
 
 // for signin/register
 export const register = async (req, res) => {
@@ -86,7 +114,7 @@ export const updateUserProfile = async (req, res) => {
   try {
     const { token, ...newUser } = req.body;
 
-    const user = User.findOne({ token: token });
+    const user = await User.findOne({ token: token });
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -107,21 +135,67 @@ export const updateUserProfile = async (req, res) => {
   }
 };
 
-// to get user profile 
-export const getUserAndProfile = async(req,res)=>{
-  try{
-    const {token} = req.body;
-    const user = await User.findOne({token:token});
+// to get user profile
+export const getUserAndProfile = async (req, res) => {
+  try {
+    const { token } = req.body;
+    const user = await User.findOne({ token: token });
 
-    if(!user){
-      return res.status(404).json({message:"User not found"});
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
     }
 
-    const userProfile = await Profile.findOne({userId:user._id}).populate( "userId","name email username profilepicture");
+    const userProfile = await Profile.findOne({ userId: user._id }).populate(
+      "userId",
+      "name email username profilepicture"
+    );
 
-    return res.json(userProfile)
-
-  }catch{
-    return res.status(500).json({message:error.message})
+    return res.json(userProfile);
+  } catch {
+    return res.status(500).json({ message: error.message });
   }
-}
+};
+
+// update user-profile
+export const updateProfileData = async (req, res) => {
+  try {
+    const { token, ...newProfileData } = req.body;
+    const userProfile = await User.findOne({ token: token });
+    if (!userProfile) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const profileToUpdate = await Profile.findOne({ userId: userProfile._id });
+    Object.assign(profileToUpdate, newProfileData);
+    await profileToUpdate.save();
+    return res.json({ message: "profile updated" });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+// get all user profile
+export const getAllUserProfile = async (req, res) => {
+  try {
+    const profiles = await Profile.find().populate(
+      "userId",
+      "name email username profilepicture"
+    );
+
+    return res.json({ profiles });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+// dowload user resume
+export const dowloadUserResume = async (req, res) => {
+  const user_id = req.query.userId;
+  const userProfile = await Profile.findOne({ userId: user_id }).populate(
+    "userId",
+    "name username email  profilePicture"
+  );
+  console.log()
+  let outputPath = await convertUserDataToPDF(userProfile);
+  return res.json({"message":outputPath});
+};
