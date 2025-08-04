@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import Profile from "../models/profile.model.js";
+import Post from "../models/post.model.js";
 import ConnectionRequest from "../models/connection.model.js";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
@@ -249,7 +250,7 @@ export const getAllMyConnectionRequest = async (req, res) => {
     const connection = await ConnectionRequest.find({
       userId: user._id,
     }).populate("connectionId", "name username email profilePicture");
-    return res.json(connection);
+    return res.json({connection});
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
