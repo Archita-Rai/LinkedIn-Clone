@@ -1,0 +1,108 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.2rem;
+}
+
+.backDropContainer {
+  width: 100%;
+  height: 35vh;
+  background-image: url("/images/backDrop.jpg");
+  background-size: cover;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  border-radius: 20px;
+}
+
+.backDropContainer > img {
+  width: 10.5em;
+  height: 10.5em;
+  object-fit: cover;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -30%;
+  left: 8%;
+  text-align: center;
+}
+
+.profileContainer_details {
+  padding-top: 3rem;
+}
+
+.viewProfile_userInfo {
+  flex: 0.8;
+  line-height:1.6rem;
+}
+.postCard {
+  margin-top: 0.6rem;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.card_profileContainer {
+  display: flex;
+}
+
+.card_profileContainer > img {
+  width: 3.4rem;
+  height: auto;
+  height: 3.4rem;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.connectBtn {
+  padding-inline: 0.8rem;
+  padding-block: 0.4rem;
+  background-color: rgba(3, 93, 183, 0.905);
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.connectedBtn {
+  padding-inline: 0.8rem;
+  padding-block: 0.4rem;
+  outline: none;
+  border: none;
+  color: rgba(3, 93, 183, 0.905);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.workHistory{
+    margin-top:1rem;
+}
+
+.workHistoryContainer {
+  display: flex;
+  gap:1.4rem;
+  padding-top:0.8rem;
+  width:100%;
+  flex-wrap:wrap
+
+}
+
+.workHistoryCard {
+  min-width: fit-content;
+  max-width: fit-content;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+  border-radius: 10px;
+  /* margin-top: 0.4rem; */
+box-shadow: 5px 5px 10px rgba(0,0,0,0.3), -5px -5px 10px rgba(255,255,255,0.5);
+}
+
+

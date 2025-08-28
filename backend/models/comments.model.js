@@ -14,7 +14,7 @@ const commentSchema = new Schema({
     type: String,
     required: true,
   },
-});
+},{ timestamps: true });
 
 const Comment = new model("Comment",commentSchema);
 export default Comment

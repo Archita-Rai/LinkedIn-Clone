@@ -1,0 +1,46 @@
+.container {
+  padding: 1.2rem;
+  background-color: rgb(254, 250, 250);
+  position:sticky;
+  top:0;
+  z-index: 1000;
+
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.homeLink{
+  background: -webkit-linear-gradient(to right, #ff9966, #ff5e62);
+  background: linear-gradient(to right, #ff9966, #ff5e62);  
+  background-clip: text;
+  color:transparent;
+  font-weight: 900;
+}
+
+.navbarOptions{
+    display: flex;
+    /* margin-left: auto; */
+}
+.joinButton {
+  /* padding: 0.1rem 2.3rem; */
+  border-radius: 0.5rem;
+  color:white;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.6rem 1rem;
+    border: none;
+    background: -webkit-linear-gradient(to right, #ff9966, #ff5e62);
+  background: linear-gradient(to right, #ff9966, #ff5e62); 
+}
+
+.profileOptions{
+  display: flex;
+  gap: 1rem;
+}
+.profile{
+  cursor: pointer;
+}
+

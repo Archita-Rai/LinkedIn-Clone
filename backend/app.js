@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 import mongoose from "mongoose"
 import postRoutes from "./routes/post.routes.js"
 import userRoutes from "./routes/user.routes.js"
+import connectionRoutes from "./routes/connection.route.js"
 
 dotenv.config()
 
@@ -14,7 +15,8 @@ app.use(cors())
 app.use(express.json());
 app.use(express.static("uploads"))
 app.use(postRoutes)
-app.use(userRoutes)
+app.use("/users",userRoutes)
+app.use(connectionRoutes)
 
 main()
   .then(() => {

@@ -27,12 +27,12 @@ const upload = multer({
 });
 
 router.route("/").get(activeCheck);
-router.route("/post").post(upload.single("media"), createPost);
-router.route("/posts").get(getAllPost);
-router.route("/delete_post").post(deletePost);
-router.route("/comment").post(commentOnPost);
-router.route("/get_comments").get(getCommentByPost);
-router.route("/delete_comment").delete(deleteCommentsOfUser);
-router.route("/increment_post_like").post(increaseLikes);
+router.route("/posts").get(getAllPost).post(upload.single("media"), createPost);
+
+router.route("/posts/:postId").delete(deletePost);
+router.route("/posts/:postId/comments").post(commentOnPost);
+router.route("/posts/:postId/comments").get(getCommentByPost);
+router.route("/posts/:postId/comments/:id").delete(deleteCommentsOfUser);
+router.route("/posts/:postId/like").patch(increaseLikes);
 
 export default router;

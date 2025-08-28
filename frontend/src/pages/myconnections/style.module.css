@@ -1,0 +1,50 @@
+.myConnectionContainer {
+
+    display: flex;
+    flex-direction: column;
+     gap:1.7rem
+}
+
+.userRequestCard {
+  box-shadow: 10px 10px 10px 0px rgb(227, 226, 226);
+
+  display: flex;
+  width: 100%;
+  gap: 1.2rem;
+  padding: 1rem;
+  align-items: center;
+}
+
+.userProfile {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.profileImageContainer {
+  width: fit-content;
+}
+
+.acceptButton {
+  padding-inline: 1.2rem;
+  padding-block: 0.5rem;
+  /* color: rgba(3, 93, 183, 0.905);
+
+     /* color:white; */
+
+  color: rgb(15, 110, 212);
+  border: 1px solid rgb(15, 110, 212);
+  /* border: 1px solid rgba(3, 93, 183, 0.905);  */
+  font-size: 0.8rem;
+  border-radius: 10px;
+  margin-left: auto;
+}

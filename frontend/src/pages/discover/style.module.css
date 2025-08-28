@@ -1,0 +1,27 @@
+.allUserProfile{
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem;
+    max-width: 80%;
+    
+}
+
+.userProfileCard{
+    display: flex;
+    gap:1.2rem;
+    padding: 1.3rem;
+    align-items: center;
+    box-shadow: 10px 10px 10px 0px rgb(227, 226, 226);
+    cursor: pointer;
+}
+
+.userCardImage {
+  height: 65px;
+  width: 65px;
+  border-radius: 50%;
+}
+
+.userProfileInfo{
+    display: flex;
+    flex-direction: column;
+}
