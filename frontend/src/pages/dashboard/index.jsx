@@ -25,7 +25,7 @@ function DashboardComponent() {
   const dispatch = useDispatch();
   const postState = useSelector((state) => state.posts);
 
-  const [commentTex, setCommentText] = useState("");
+  
 
   useEffect(() => {
     if (authState.isToken) {
@@ -41,6 +41,7 @@ function DashboardComponent() {
     }
   }, [authState.isToken]);
 
+  const [commentTex, setCommentText] = useState("");
   const [postContent, setPostContent] = useState("");
   const [fileContent, setFileContent] = useState();
   const [isComment, setIsComment] = useState(false);

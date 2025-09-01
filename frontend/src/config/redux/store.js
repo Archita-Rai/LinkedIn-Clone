@@ -8,3 +8,46 @@ export const store = configureStore({
     posts: postReducer,
   },
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                // <div style={{ flex: "0.2" }}>
+                //   <h3> Recent Activity</h3>
+
+                //   {userPosts.map((post) => {
+                //     return (
+                //       <div key={post._id} className={styles.postCard}>
+                //         <div className={styles.card}>
+                //           <div className={styles.card_profileContainer}>
+                //             {post.media !== "" ? (
+                //               <img
+                //                 src={`${BASE_URL}/${post.media}`}
+                //                 alt="User recent post"
+                //               />
+                //             ) : (
+                //               ""
+                //             )}
+                //           </div>
+                //           <p>{post.body}</p>
+                //         </div>
+                //       </div>
+                //     );
+                //   })}
+                // </div>

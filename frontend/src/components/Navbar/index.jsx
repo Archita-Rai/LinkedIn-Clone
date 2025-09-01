@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { reset } from "@/config/redux/reducer/authReducer";
+import { emptyMessage, reset } from "@/config/redux/reducer/authReducer";
 
 function NavbarComponent() {
   const router = useRouter();
@@ -27,7 +27,10 @@ function NavbarComponent() {
                 <p className={styles.username}>
                   Hey! {authState.user.userId.name}
                 </p>
-                <h4 className={styles.profile}>Profile</h4>
+                <h4 className={styles.profile}  onClick={()=>{
+                  router.push("/profile")
+                  dispatch(emptyMessage())
+                }}>Profile</h4>
                 <h4
                   className={styles.profile}
                   onClick={() => {

@@ -103,11 +103,11 @@
 .extraContainer_profile {
   display: flex;
   flex-direction: column;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding-block:1rem;
   padding-inline:1rem;
   margin-right:1rem;
- 
+  border-radius: 1rem;
 }
 
 .extraContainer_profile > img {
@@ -116,4 +116,14 @@
   border-radius: 50%;
   background-position: center;
   background-size: cover;
+}
+
+@media only screen and (max-width:992px){
+  .homeContainer_extraContainer{
+    display: none;
+  }
+     .homeContainer > div:nth-child(even){
+  flex:1;
+ }
+
 }

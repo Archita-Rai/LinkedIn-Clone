@@ -96,6 +96,7 @@ export const login = async (req, res) => {
 // upload profile picture route
 export const uploadProfilePicture = async (req, res) => {
   const { token } = req.body;
+  console.log(token);
 
   try {
     const user = await User.findOne({ token: token });
@@ -169,8 +170,11 @@ export const updateProfileData = async (req, res) => {
     }
 
     const profileToUpdate = await Profile.findOne({ userId: userProfile._id });
+
     Object.assign(profileToUpdate, newProfileData);
+
     await profileToUpdate.save();
+
     return res.json({ message: "profile updated" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -193,10 +197,9 @@ export const getAllUserProfile = async (req, res) => {
 
 // dowload user resume
 export const dowloadUserResume = async (req, res) => {
+  const id = req.params.id;
 
-  const userId = req.params.userId;
-
-  const userProfile = await Profile.findOne({ userId: userId }).populate(
+  const userProfile = await Profile.findOne({ userId: id }).populate(
     "userId",
     "name username email  profilePicture"
   );
@@ -219,6 +222,48 @@ export const getUserProfileBasedOnUserName = async (req, res) => {
     );
 
     return res.json({ profile: userProfile });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+// delete work from the userProfile
+export const deleteWorkEntry = async (req, res) => {
+  try {
+    const { token, workId } = req.body;
+    const userProfile = await User.findOne({ token });
+    if (!userProfile) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    await Profile.updateOne(
+      { userId: userProfile._id },
+      { $pull: { pastWork: { _id: workId } } }
+    );
+
+    return res.json({ message: "Work entry deleted" });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+
+
+// delete education from the userProfile
+export const deleteEducationEntry = async (req, res) => {
+  try {
+    const { token, educationId } = req.body;
+    const userProfile = await User.findOne({ token });
+    if (!userProfile) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    await Profile.updateOne(
+      { userId: userProfile._id },
+      { $pull: { education: { _id: educationId } } }
+    );
+
+    return res.json({ message: "Education entry deleted" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

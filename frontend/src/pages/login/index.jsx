@@ -56,7 +56,7 @@ function LoginComponent() {
       <div className={styles.container}>
         <div className={styles.cardContainer}>
           <div className={styles.cardContainer_left}>
-            <h2 style={{ color: "#007bb6" }}>
+            <h2 style={{ color: "#002164" , fontFamily:"popins", fontWeight:"bold"}}>
               {userLoginMethod ? "Sign In" : "Sign Up"}
             </h2>
             <p
@@ -139,7 +139,7 @@ function LoginComponent() {
                   : "Don't Have an Account"}
               </h2>
               <button
-                style={{ backgroundColor: "white", color: "#007bb6" }}
+                style={{ backgroundColor: "white", color: "#002164", fontFamily:"popins",fontWeight:"bold" }}
                 className={styles.sign_in_up_btn}
                 onClick={(e) => {
                   setUserLoginMethod(!userLoginMethod);

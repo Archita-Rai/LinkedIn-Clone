@@ -42,7 +42,7 @@
 }
 
 .connectPara {
-    background: linear-gradient(45deg, black, #b2b2b2);
+  background: linear-gradient(45deg, black, #b2b2b2);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -60,20 +60,20 @@
 .joinButton {
   padding: 0.1rem 2.3rem;
   border-radius: 0.3rem;
-  color:white;
+  color: white;
   cursor: pointer;
-  background: -webkit-linear-gradient(to right, #ec008c, #fc6767); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #ec008c, #fc6767);
+  background: -webkit-linear-gradient(to right, #ff9966, #ff5e62);
+  background: linear-gradient(to right, #ff9966, #ff5e62); 
   font-size: 1.1rem;
   font-weight: 600;
   padding: 1rem 2rem;
-    margin-top: 1rem;
-    border: none;
-    font-family: "montserrat";
+  margin-top: 1rem;
+  border: none;
+  font-family: "montserrat";
 }
-@media only screen and (max-width: 1400px){
-  .mainContainer_left{
-    line-height:3rem;
+@media only screen and (max-width: 1400px) {
+  .mainContainer_left {
+    line-height: 3rem;
   }
 }
 
@@ -82,11 +82,11 @@
     height: 85%;
     width: 85%;
   }
-  .mainContainer_left{
-    padding-left:2rem;
+  .mainContainer_left {
+    padding-left: 2rem;
   }
   .connectPara {
-    font-size:2rem;
+    font-size: 2rem;
   }
   .socialMediaPara {
     line-height: normal;

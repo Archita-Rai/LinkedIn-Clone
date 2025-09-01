@@ -91,7 +91,7 @@ export const sendConnectionRequest = createAsyncThunk(
         token: user.token,
         connectionId: user.userId,
       });
-        thunkAPI.dispatch(getConnectionsRequest({token:user.token}))
+      thunkAPI.dispatch(getConnectionsRequest({ token: user.token }));
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -147,9 +147,102 @@ export const acceptConnection = createAsyncThunk(
         }
       );
 
+      thunkAPI.dispatch(getConnectionsRequest({ token: user.token }));
+
+      thunkAPI.dispatch(getMyConnectionRequests({ token: user.token }));
+
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
+
+export const updateUser = createAsyncThunk(
+  "user/updateUser",
+  async (userProfile, thunkAPI) => {
+    try {
+      const id = userProfile.userId._id;
+     
+      const response = await clientServer.put(`/users/${id}`, {
+        token: localStorage.getItem("token"),
+        name: userProfile.userId.name,
+        username: userProfile.userId.username,
+      });
+
+       
+      thunkAPI.dispatch(getAboutUser({ token: localStorage.getItem("token") }));
+       thunkAPI.dispatch(getAllUsers())
+
+
+      return thunkAPI.fulfillWithValue(response.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const updateUserProfile = createAsyncThunk(
+  "user/updateUserProfile",
+  async (userProfile, thunkAPI) => {
+    try {
+       const profileId = userProfile._id;
+      const response = await clientServer.put(`/users/profiles/${profileId}`, {
+        token: localStorage.getItem("token"),
+        bio: userProfile.bio,
+        currentPost: userProfile.currentPost,
+        pastWork: userProfile.pastWork,
+        education: userProfile.education,
+      });
+
+      thunkAPI.dispatch(getAboutUser({ token: localStorage.getItem("token") }));
+
+      thunkAPI.dispatch(getAllUsers())
+
+      return thunkAPI.fulfillWithValue(response.data)
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+
+export const deleteWork = createAsyncThunk(
+  "profile/deleteWork",
+  async (workId, thunkAPI) => {
+    try {
+      const response = await clientServer.delete(`/users/profiles/work`, {
+        data: {
+          token: localStorage.getItem("token"),
+          workId
+        }
+      });
+
+      thunkAPI.dispatch(getAboutUser({ token: localStorage.getItem("token") }));
+      return thunkAPI.fulfillWithValue(response.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+
+export const deleteEducation = createAsyncThunk(
+  "profile/deleteEducation",
+  async (educationId, thunkAPI) => {
+    try {
+      const response = await clientServer.delete(`/users/profiles/education`, {
+        data: {
+          token: localStorage.getItem("token"),
+          educationId
+        }
+      });
+
+      thunkAPI.dispatch(getAboutUser({ token: localStorage.getItem("token") }));
+      return thunkAPI.fulfillWithValue(response.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+

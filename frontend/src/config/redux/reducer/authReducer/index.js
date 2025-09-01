@@ -1,4 +1,4 @@
-import { getAboutUser, getAllUsers, getConnectionsRequest, getMyConnectionRequests, loginUser, registerUser } from "../../action/authAction";
+import { getAboutUser, getAllUsers, getConnectionsRequest, getMyConnectionRequests, loginUser, registerUser, updateUser, updateUserProfile } from "../../action/authAction";
 import { createSlice } from "@reduxjs/toolkit";
 
 
@@ -91,6 +91,14 @@ const authSlice = createSlice({
       })
       .addCase(getMyConnectionRequests.rejected,(state,action)=>{
         state.message = action.payload
+      })
+      .addCase(updateUser.rejected,(state,action)=>{
+        console.log(action.payload);
+        state.message = action.payload.message
+      })
+      .addCase(updateUserProfile.rejected,(state,action) =>{
+        console.log(action.payload);
+        state.message = action.payload.message
       })
   },
 });

@@ -6,6 +6,7 @@ import { setIsToken } from "@/config/redux/reducer/authReducer";
 import { getAllUsers } from "@/config/redux/action/authAction";
 import { getAllPosts } from "@/config/redux/action/postAction";
 import Link from "next/link";
+import { BASE_URL } from "@/config";
 
 function DashboardLayout({ children }) {
   const router = useRouter();
@@ -26,7 +27,7 @@ function DashboardLayout({ children }) {
     if (!authState.allProfileFetched) {
       dispatch(getAllUsers());
     }
-  });
+  },[]);
 
   return (
     <div className={styles.container}>
@@ -111,7 +112,7 @@ function DashboardLayout({ children }) {
                   }}
                 >
                   <img
-                    src={`http://localhost:9000/${profile?.userId?.profilePicture}`}
+                    src={`${BASE_URL}/${profile?.userId?.profilePicture}`}
                   />
                   <p
                     style={{

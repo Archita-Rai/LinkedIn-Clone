@@ -64,21 +64,21 @@ export default function ViewProfilePage({ userProfile }) {
       setIsCurrentUserInConnection(false);
     }
 
-    if (
-      authState.connectionRequest.some(
-        (user) => user.userId._id === userProfile.userId._id
-      )
-    ) {
-      setIsCurrentUserInConnection(true);
-      if (
-        authState.connectionRequest.find(
-          (user) => user.userId._id === userProfile.userId._id
-        ).status_accepted === true
-      ) {
-        setIsConnectionNull(false);
-      }
-    }
-  }, [authState.connections , authState.connectionRequest ]);
+    // if (
+    //   authState.connectionRequest.some(
+    //     (user) => user.userId._id === userProfile.userId._id
+    //   )
+    // ) {
+    //   setIsCurrentUserInConnection(true);
+    //   if (
+    //     authState.connectionRequest.find(
+    //       (user) => user.userId._id === userProfile.userId._id
+    //     ).status_accepted === true
+    //   ) {
+    //     setIsConnectionNull(false);
+    //   }
+    // }
+  }, [authState.connections, authState.connectionRequest]);
 
   useEffect(() => {
     getUserPost();
@@ -137,9 +137,9 @@ export default function ViewProfilePage({ userProfile }) {
                   <div
                     className={styles.dowloadResumeOption}
                     onClick={async () => {
-                      const userId = userProfile.userId._id;
+                      const id = userProfile.userId._id;
                       const response = await clientServer.get(
-                        `/users/${userId}/resume`
+                        `/users/${id}/resume`
                       );
                       window.open(
                         `${BASE_URL}/${response.data.message}`,
@@ -167,13 +167,25 @@ export default function ViewProfilePage({ userProfile }) {
 
                 {userProfile.bio && (
                   <div>
-                    <p style={{ fontSize: "1.1rem", paddingTop: "0.6rem" }}>
+                    <p
+                      style={{
+                        fontSize: "1.1rem",
+                        paddingTop: "0.6rem",
+                        fontFamily: "popins",
+                      }}
+                    >
                       {userProfile.bio}
                     </p>
                   </div>
                 )}
 
                 <div className={styles.workHistory}>
+                  {userProfile.currentPost && (
+                    <h3>
+                      {" "}
+                      <p>Current Post: {userProfile.currentPost}</p>{" "}
+                    </h3>
+                  )}
                   <h3>Work History</h3>
                   <div className={styles.workHistoryContainer}>
                     {userProfile.pastWork.map((work, index) => {
@@ -195,7 +207,35 @@ export default function ViewProfilePage({ userProfile }) {
                     })}
                   </div>
                 </div>
+
+
+
+                <div className={styles.workHistory}>
+                 
+                  <h3>Education</h3>
+                  <div className={styles.workHistoryContainer}>
+                    {userProfile.education.map((educ, index) => {
+                      return (
+                        <div key={index} className={styles.workHistoryCard}>
+                          <p
+                            style={{
+                              fontWeight: "bold",
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "0.8rem",
+                            }}
+                          >
+                            {educ.school} - {educ.degree}
+                          </p>
+                          <p>{educ.fieldOfStudy} year</p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
+
+              
               <div style={{ flex: "0.2" }}>
                 <h3> Recent Activity</h3>
 
@@ -228,9 +268,6 @@ export default function ViewProfilePage({ userProfile }) {
 }
 
 export async function getServerSideProps(context) {
-  // console.log("form view");
-  // console.log(context);
-
   const request = await clientServer.get("/users/profile", {
     params: {
       username: context.query.username,
@@ -238,6 +275,5 @@ export async function getServerSideProps(context) {
   });
 
   const response = await request.data;
-  console.log(response);
   return { props: { userProfile: request.data.profile } };
 }

@@ -39,22 +39,33 @@
   background-color: rgb(246, 246, 246);
   outline: none;
   font-size: 1rem;
+  font-family: "popins";
+
+}
+
+.inputRow:focus{
+ border:1px solid silver;
 }
 .inputField {
   outline: none;
   padding-block: 1rem;
   width: 70%;
   margin-bottom: 2rem;
-  border-radius: 5px;
+  border-radius:10px;
   padding-left: 0.5rem;
   border: none;
   background-color: rgb(246, 246, 246);
   outline: none;
   font-size: 1rem;
+  font-family: "popins";
+}
+
+.inputField:focus{
+ border:1px solid silver;
 }
 .cardContainer_right {
   flex: 0.5;
-  background-color: #007bb6;
+  background-color: #002164;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,7 +73,8 @@
 .sign_in_up_btn {
   border: none;
   outline: none;
-  background-color: #007bb6;
+  /* background-color: #007bb6; */
+   background-color: #002164;
   width: 70%;
   padding-inline: 2rem;
   padding-block: 1rem;
@@ -72,6 +84,7 @@
   font-weight: 500;
   color: white;
   cursor: pointer;
+  font-family: "popins";
 }
 @media only screen and (max-width: 1400px) {
   .cardContainer {
@@ -161,8 +174,11 @@
 }
 
 .loginOptions {
-  color: rgb(59, 59, 241);
+ color: #002164;
   display: none;
+  font-family: "popins";
+  font-size: 1.1rem;
+  font-weight: "bold";
 }
 .loginTitle {
   color: white;

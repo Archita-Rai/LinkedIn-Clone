@@ -62,19 +62,15 @@ function MyConnectionPage() {
 
                       <button
                         className={styles.acceptButton}
-                        onClick={ async(e) => {
+                        onClick={async (e) => {
                           e.stopPropagation();
-
-                         await dispatch(
+                          await dispatch(
                             acceptConnection({
                               connectionId: user._id,
                               token: localStorage.getItem("token"),
                               action: "accept",
                             })
-
                           );
-
-                          await dispatch(getMyConnectionRequests({ token: localStorage.getItem("token") }));
                         }}
                       >
                         Accept
@@ -83,10 +79,8 @@ function MyConnectionPage() {
                   </div>
                 );
               })}
-            
 
-
-             <h4>My Network</h4>
+          <h4>My Network</h4>
           {authState.connectionRequest
             .filter((connection) => connection.status_accepted !== null)
             .map((user) => {

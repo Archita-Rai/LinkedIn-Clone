@@ -9,6 +9,8 @@ import {
   updateUserProfile,
   uploadProfilePicture,
   getUserProfileBasedOnUserName,
+  deleteWorkEntry,
+  deleteEducationEntry,
 } from "../controllers/user.controller.js";
 import multer from "multer";
 
@@ -31,13 +33,15 @@ router.route("/").get(getAllUserProfile);
 router.route("/register").post(register);
 router.route("/login").post(login);
 router
-  .route("/update_profile_picture")
+  .route("/:id/profile_picture")
   .post(upload.single("profile_picture"), uploadProfilePicture);
-router.route("/user_update").post(updateUserProfile);
+router.route("/:id").put(updateUserProfile);
 router.route("/:id/profile").get(getUserAndProfile);
-router.route("/update_profile_data").post(updateProfileData);
-router.route("/:userId/resume").get(dowloadUserResume);
+router.route("/profiles/:profileId").put(updateProfileData);
+router.route("/:id/resume").get(dowloadUserResume);
 
 router.route("/profile").get(getUserProfileBasedOnUserName);
+router.route("/profiles/work").delete(deleteWorkEntry);
+router.route("/profiles/education").delete(deleteEducationEntry)
 
 export default router;
