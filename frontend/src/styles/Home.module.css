@@ -59,14 +59,13 @@
 }
 .joinButton {
   padding: 0.1rem 2.3rem;
-  border-radius: 0.3rem;
+  border-radius:2rem;
   color: white;
   cursor: pointer;
-  background: -webkit-linear-gradient(to right, #ff9966, #ff5e62);
-  background: linear-gradient(to right, #ff9966, #ff5e62); 
+   background:linear-gradient(to right, #6366F1 0%, #3B82F6 100%);
   font-size: 1.1rem;
   font-weight: 600;
-  padding: 1rem 2rem;
+  padding: 1rem 2.2rem;
   margin-top: 1rem;
   border: none;
   font-family: "montserrat";

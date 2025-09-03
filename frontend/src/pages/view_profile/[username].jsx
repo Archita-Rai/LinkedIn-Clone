@@ -96,8 +96,8 @@ export default function ViewProfilePage({ userProfile }) {
           </div>
 
           <div className={styles.profileContainer_details}>
-            <div style={{ display: "flex", gap: "0.7rem" }}>
-              <div className={styles.viewProfile_userInfo}>
+            <div className={styles.viewProfile_wrapper}>
+              <div className={styles.viewProfile_userInfo} style={{flex:userPosts.length > 0 ? "0.8":"1"}}>
                 <div
                   style={{
                     display: "flex",
@@ -181,10 +181,8 @@ export default function ViewProfilePage({ userProfile }) {
 
                 <div className={styles.workHistory}>
                   {userProfile.currentPost && (
-                    <h3>
-                      {" "}
-                      <p>Current Post: {userProfile.currentPost}</p>{" "}
-                    </h3>
+                   <h4>Current Post: {userProfile.currentPost}</h4>
+                  
                   )}
                   <h3>Work History</h3>
                   <div className={styles.workHistoryContainer}>
@@ -208,10 +206,7 @@ export default function ViewProfilePage({ userProfile }) {
                   </div>
                 </div>
 
-
-
                 <div className={styles.workHistory}>
-                 
                   <h3>Education</h3>
                   <div className={styles.workHistoryContainer}>
                     {userProfile.education.map((educ, index) => {
@@ -235,30 +230,32 @@ export default function ViewProfilePage({ userProfile }) {
                 </div>
               </div>
 
-              
-              <div style={{ flex: "0.2" }}>
-                <h3> Recent Activity</h3>
+              {userPosts.length > 0 && (
+                <div className={styles.recentActivity_wrapper}>
+                  <hr className={styles.hr}></hr>
+                  <h3> Recent Activity</h3>
 
-                {userPosts.map((post) => {
-                  return (
-                    <div key={post._id} className={styles.postCard}>
-                      <div className={styles.card}>
-                        <div className={styles.card_profileContainer}>
-                          {post.media !== "" ? (
-                            <img
-                              src={`${BASE_URL}/${post.media}`}
-                              alt="User recent post"
-                            />
-                          ) : (
-                            ""
-                          )}
+                  {userPosts.map((post) => {
+                    return (
+                      <div key={post._id} className={styles.postCard}>
+                        <div className={styles.card}>
+                          <div className={styles.card_profileContainer}>
+                            {post.media !== "" ? (
+                              <img
+                                src={`${BASE_URL}/${post.media}`}
+                                alt="User recent post"
+                              />
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                          <p>{post.body}</p>
                         </div>
-                        <p>{post.body}</p>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
         </div>

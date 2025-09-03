@@ -48,3 +48,22 @@
   border-radius: 10px;
   margin-left: auto;
 }
+
+
+@media only screen and (max-width:768px) {
+
+ .myConnectionContainer{
+  margin-bottom:4rem;
+ }
+}
+@media only screen and (max-width: 600px) {
+
+  .userProfile{
+    height:60px;
+    width:60px;
+  }
+
+  .userInfo > h2{
+    font-size:1.2rem;
+  }
+}

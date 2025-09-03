@@ -25,8 +25,6 @@ function DashboardComponent() {
   const dispatch = useDispatch();
   const postState = useSelector((state) => state.posts);
 
-  
-
   useEffect(() => {
     if (authState.isToken) {
       dispatch(getAllPosts());
@@ -61,8 +59,10 @@ function DashboardComponent() {
           <div className={styles.scrollPannel}>
             <div className={styles.wrapper}>
               <div className={styles.createPostContainer}>
+                {console.log(authState.user)
+                }
                 <img
-                  src={`${BASE_URL}/${authState.user.userId.profilePicture}`}
+                  src={`${BASE_URL}/${authState.user?.userId?.profilePicture}`}
                   className={styles.userProfile}
                 />
                 <textarea

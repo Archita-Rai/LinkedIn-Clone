@@ -22,8 +22,8 @@
   object-fit: cover;
   border-radius: 50%;
   position: absolute;
-  bottom: -30%;
-  left: 8%;
+  bottom: -25%;
+  left: 5%;
   text-align: center;
 }
 
@@ -31,10 +31,19 @@
   padding-top: 3rem;
 }
 
+.viewProfile_wrapper {
+  display: flex;
+  gap: 0.7rem;
+}
+
 .viewProfile_userInfo {
   flex: 0.8;
-  line-height:1.6rem;
+  line-height: 1.6rem;
 }
+.recentActivity_wrapper {
+  flex: 0.2;
+}
+
 .postCard {
   margin-top: 0.6rem;
 }
@@ -82,17 +91,16 @@
   cursor: pointer;
 }
 
-.workHistory{
-    margin-top:1rem;
+.workHistory {
+  margin-top: 1rem;
 }
 
 .workHistoryContainer {
   display: flex;
-  gap:1.4rem;
-  padding-top:0.8rem;
-  width:100%;
-  flex-wrap:wrap
-
+  gap: 1.4rem;
+  padding-top: 0.8rem;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .workHistoryCard {
@@ -102,7 +110,35 @@
   padding-block: 1rem;
   border-radius: 10px;
   /* margin-top: 0.4rem; */
-box-shadow: 5px 5px 10px rgba(0,0,0,0.3), -5px -5px 10px rgba(255,255,255,0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),
+    -5px -5px 10px rgba(255, 255, 255, 0.5);
+}
+.hr {
+  display: none;
+}
+
+@media only screen and (max-width:768px) {
+
+ .container{
+  margin-bottom: 6rem;
+ }
 }
 
 
+@media only screen and (max-width: 600px) {
+  .viewProfile_wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hr {
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .card_profileContainer > img {
+    width: 4rem;
+    height: 4rem;
+  }
+}

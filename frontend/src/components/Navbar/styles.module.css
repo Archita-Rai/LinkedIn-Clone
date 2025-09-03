@@ -1,46 +1,74 @@
 .container {
-  padding: 1.2rem;
-  background-color: rgb(254, 250, 250);
-  position:sticky;
-  top:0;
+  padding: 1rem;
+  background-color: snow;
+
+  position: sticky;
+  top: 0;
   z-index: 1000;
-
 }
-.navbar{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.homeLink{
+.homeLink {
   background: -webkit-linear-gradient(to right, #ff9966, #ff5e62);
-  background: linear-gradient(to right, #ff9966, #ff5e62);  
+  background: linear-gradient(to right, #ff9966, #ff5e62);
   background-clip: text;
-  color:transparent;
+  color: transparent;
   font-weight: 900;
+ 
 }
 
-.navbarOptions{
-    display: flex;
-    /* margin-left: auto; */
+.navbarOptions {
+  display: flex;
 }
 .joinButton {
-  /* padding: 0.1rem 2.3rem; */
-  border-radius: 0.5rem;
-  color:white;
+  border-radius: 1.3rem;
+  color: white;
   cursor: pointer;
   font-size: 1.1rem;
   font-weight: 500;
   padding: 0.6rem 1rem;
-    border: none;
-    background: -webkit-linear-gradient(to right, #ff9966, #ff5e62);
-  background: linear-gradient(to right, #ff9966, #ff5e62); 
+  border: none;
+  color: white;
+
+  background: linear-gradient(to right, #6366f1 0%, #3b82f6 100%);
 }
 
-.profileOptions{
+.profileOptions {
   display: flex;
   gap: 1rem;
 }
-.profile{
+.profile {
+  display: inline-block;
   cursor: pointer;
+  border: none;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  background-color: white;
+  border-radius: 1.3rem;
+  font-weight: bold;
+  font-size: 1.07rem;
+  background: linear-gradient(to right, #6366f1 0%, #3b82f6 100%);
+  color: white;
 }
+
+.userNameContainer {
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 680px) {
+  .username {
+    display: none;
+  }
+}
+
+@media only screen and (max-width:500px){
+  .profile{
+    font-size: 0.8rem;
+  }
+}
+
 

@@ -22,8 +22,7 @@ import {
 } from "@/config/redux/action/postAction";
 import { emptyMessage } from "@/config/redux/reducer/authReducer";
 import { resetPostId } from "@/config/redux/reducer/postReducer";
-import { trackFallbackParamAccessed } from "next/dist/server/app-render/dynamic-rendering";
-import { TURBO_TRACE_DEFAULT_MEMORY_LIMIT } from "next/dist/shared/lib/constants";
+
 
 function ProfilePage() {
   const dispatch = useDispatch();
@@ -691,9 +690,10 @@ function ProfilePage() {
                   style={{
                     height: "fit-content",
                     textAlign: "center",
-                    width: "fit-content",
+                    backgroundColor:"white"
                   }}
                   className={styles.allCommentsContainer}
+                  
                   onClick={(e) => {
                     e.stopPropagation();
                   }}
@@ -753,7 +753,6 @@ function ProfilePage() {
                   style={{
                     height: "fit-content",
                     textAlign: "center",
-                    width: "fit-content",
                   }}
                   className={styles.allCommentsContainer}
                   onClick={(e) => {

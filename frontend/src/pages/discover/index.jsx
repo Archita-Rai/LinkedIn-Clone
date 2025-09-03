@@ -20,8 +20,8 @@ export default function DiscoverPage() {
   return (
     <UserLayout>
       <DashboardLayout>
-        <div>
-          <h1> Discover</h1>
+        <div className={styles.container}>
+          <h1 style={{marginLeft:"6rem"}} className={styles.discover_heading}> Discover</h1>
           <div className={styles.allUserProfile}>
             {
               authState.allProfileFetched && authState.allUsers.map((user)=>{
@@ -31,7 +31,7 @@ export default function DiscoverPage() {
                   }}>
                     
                     <img src={`${BASE_URL}/${user.userId.profilePicture}`} alt="Profile_Pic" className={styles.userCardImage }></img><div className={styles.userProfileInfo}>
-                    <h2>{user.userId.name}</h2>
+                    <h2 className={styles.userName_discover}>{user.userId.name}</h2>
                     <p>{user.userId.email}</p></div>
                   </div>
                 )

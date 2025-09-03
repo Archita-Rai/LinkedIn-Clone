@@ -24,24 +24,41 @@ function NavbarComponent() {
           {authState.profileFetch && (
             <div>
               <div className={styles.profileOptions}>
-                <p className={styles.username}>
-                  Hey! {authState.user.userId.name}
-                </p>
-                <h4 className={styles.profile}  onClick={()=>{
-                  router.push("/profile")
-                  dispatch(emptyMessage())
-                }}>Profile</h4>
+                <div className={styles.userNameContainer}>
+                  <p
+                    className={styles.username}
+                    style={{
+                      fontWeight: "900",
+                      color: "#D9069C",
+                      fontSize: "1.1rem",
+                    }}
+                  >
+                    Hey! {authState.user.userId.name}
+                  </p>
+                </div>
                 <h4
                   className={styles.profile}
                   onClick={() => {
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("userId");
-                    dispatch(reset());
-                    router.push("/login");
+                    router.push("/profile");
+                    dispatch(emptyMessage());
                   }}
                 >
-                  Log out
+                  Profile
                 </h4>
+
+                
+                  <button
+                    className={styles.profile}
+                    onClick={() => {
+                      localStorage.removeItem("token");
+                      localStorage.removeItem("userId");
+                      dispatch(reset());
+                      router.push("/login");
+                    }}
+                  >
+                    Logout
+                  </button>
+                
               </div>
             </div>
           )}
