@@ -24,6 +24,7 @@
   height: 65px;
   width: 65px;
   border-radius: 50%;
+   border:1px solid silver;
 }
 
 .userProfileInfo{

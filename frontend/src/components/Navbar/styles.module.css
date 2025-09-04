@@ -71,4 +71,17 @@
   }
 }
 
+@media only screen and (max-width:400px){
+  .homeLink{
+    font-size: 1.3rem;
+  }
+  .joinButton{
+    font-size: 0.9rem;
+  }
+    .profile{
+    padding-inline: 0.8rem;
+    padding-block: 0.4rem;
+  }
+}
+
 

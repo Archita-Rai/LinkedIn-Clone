@@ -26,13 +26,12 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
 }
 .uploadButton {
   position: absolute;
   right: 0;
   bottom: -40%;
-   background: linear-gradient(to right, #6366f1 0%, #3b82f6 100%);
+  background: linear-gradient(to right, #6366f1 0%, #3b82f6 100%);
   color: white;
   border: none;
   outline: none;
@@ -54,10 +53,11 @@
   height: 65px;
   width: 65px;
   border-radius: 50%;
+  border: 1px solid silver;
 }
 
 .Fab {
-  background-color: rgb(8, 8, 73);
+  background: linear-gradient(to right, #6366f1 0%, #3b82f6 100%);
   border-radius: 100%;
   /* text-align: center;
     height: 29px; */
@@ -79,7 +79,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 }
 
 .postCardContainer_profileConatiner {
@@ -97,6 +96,7 @@
   width: 75px;
   height: 75px;
   border-radius: 50%;
+  border: 1px solid silver;
 }
 .postCardImage {
   width: 100%;
@@ -174,7 +174,7 @@
   background: white;
   border-radius: 10px;
   position: relative;
-  padding: 1.4rem;
+  padding: 1.2rem;
   overflow: hidden;
 }
 .allComments {
@@ -204,10 +204,8 @@
   background-color: white;
   justify-self: center;
   border: 1px solid silver;
-  margin-inline:1rem;
+  margin-inline: 1rem;
 }
-
-
 
 .postCommentContainer {
   position: absolute;
@@ -216,8 +214,8 @@
   width: 90%;
   display: flex;
   justify-content: center;
-  gap:0.8rem;
-  align-items:center;
+  gap: 0.5rem;
+  align-items: center;
   padding-block: 1rem;
 }
 .inputCommentWrapper {
@@ -226,7 +224,7 @@
 }
 .postCommentContainer > .inputCommentWrapper > input {
   width: 100%;
-  padding-inline: 1.5rem;
+  padding-inline: 1rem;
   padding-block: 1rem;
   outline: none;
   border-radius: 10px;
@@ -259,13 +257,13 @@
   font-weight: 600;
   cursor: pointer;
   text-align: center;
-
 }
 
 .commentUserProfilePic {
   height: 40px;
   width: 40px;
   border-radius: 50%;
+  border: 1px solid silver;
 }
 .singleComment_profileContainer {
   display: flex;
@@ -310,44 +308,61 @@
   transform: scale(0.95);
 }
 
-@media only screen and (max-width:1200px){
-  .wrapper{
-    width:80%;
+@media only screen and (max-width: 1200px) {
+  .wrapper {
+    width: 80%;
+  }
+  .allCommentsContainer{
+    width:50%;
   }
 }
 
-@media only screen and (max-width:992px){
-.allCommentsContainer{
-   width:60vh;
-   
-}
-}
-@media only screen and (max-width:768px){
-  .wrapper{
-    width: 80%;
-  }
-    .userProfilePic{
-    width:55px;
-    height:55px;
-  }
-  .postContainer{
-    margin-bottom: 6rem;
+@media only screen and (max-width: 992px) {
+  .allCommentsContainer {
+    width: 60%;
   }
 }
-@media only screen and (max-width:500px){
-  .wrapper{
-    width: 100%;
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    width:80%;
   }
-  .createPostContainer{
-    padding-inline:0.8rem;
-  }
-  .userProfilePic{
-    width:45px;
-    height:45px;
-  }
-  .userProfile{
+  .userProfilePic {
     width: 55px;
     height: 55px;
-    
+  }
+  .postContainer {
+    margin-bottom: 6rem;
+  }
+  .allCommentsContainer{
+    width:80%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .wrapper {
+    width: 100%;
+  }
+  .createPostContainer {
+    padding-inline: 0.8rem;
+  }
+  .userProfilePic {
+    width: 45px;
+    height: 45px;
+  }
+  .userProfile {
+    width: 55px;
+    height: 55px;
+  }
+  .allCommentsContainer{
+    width:90%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .singleOption > svg {
+    min-height: 1.3rem;
+    max-height: 1.3rem;
+    min-width: 1.3rem;
+  }
+    .allCommentsContainer {
+    width: 90%;
   }
 }

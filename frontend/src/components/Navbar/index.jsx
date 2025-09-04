@@ -45,8 +45,6 @@ function NavbarComponent() {
                 >
                   Profile
                 </h4>
-
-                
                   <button
                     className={styles.profile}
                     onClick={() => {
@@ -58,7 +56,6 @@ function NavbarComponent() {
                   >
                     Logout
                   </button>
-                
               </div>
             </div>
           )}

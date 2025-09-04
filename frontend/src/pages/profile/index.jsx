@@ -232,6 +232,7 @@ function ProfilePage() {
                       <label htmlFor="currentPost">Current Post:</label>
                       <input
                         placeholder="Add your current post"
+                        style={{backgroundColor:"white"}}
                         id="currentPost"
                         className={styles.nameEdit}
                         type="text"
@@ -302,11 +303,6 @@ function ProfilePage() {
                             setIsWorkEditable(false);
                           }, 10000);
                           setIsWorkModelOpen(true);
-                          // dispatch(
-                          //   getAboutUser({
-                          //     token: localStorage.getItem("token"),
-                          //   })
-                          // );
                         }}
                       >
                         Add Work
@@ -779,7 +775,7 @@ function ProfilePage() {
                     className={styles.inputField}
                     type="text"
                     name="fieldOfStudy"
-                    placeholder="time duration"
+                    placeholder="time duration & study field"
                     onChange={handleEducationInputChange}
                     required
                   />
