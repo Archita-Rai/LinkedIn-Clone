@@ -308,6 +308,12 @@
   transform: scale(0.95);
 }
 
+.postImageandInfo_smallDevice{
+  display: block;
+}
+.postImageAndInfo_exsmallDevice{
+  display: none;
+}
 @media only screen and (max-width: 1200px) {
   .wrapper {
     width: 80%;
@@ -357,11 +363,6 @@
   }
 }
 @media only screen and (max-width: 400px) {
-  .singleOption > svg {
-    min-height: 1.1rem;
-    max-height: 1.1rem;
-    min-width: 1.1rem;
-  }
     .allCommentsContainer {
     width: 90%;
   }
@@ -369,5 +370,35 @@
 .postCardContainer_profileConatiner{
   padding-right:0.5rem;
 }
+}
+
+@media only screen and (max-width:450px){
+  .postImageandInfo_smallDevice{
+    display: none;
+  }
+  .postCardContainer_profileConatiner{
+    padding-top: 1.2rem;
+  }
+  .postImageAndInfo_exsmallDevice{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width:90%;
+    padding-left: 2rem;
+  }
+
+  .postBody{
+    padding-left:0.5rem;
+  }
+  .userProfilePic{
+     width: 60px;
+    height: 60px;
+  }
+    .singleOption > svg {
+    min-height: 1.2rem;
+    max-height: 1.2rem;
+    min-width: 1.2rem;
+  }
+  
 }
 

@@ -83,7 +83,6 @@ function ProfilePage() {
   useEffect(() => {
     if (authState.user && authState.user.userId) {
       setUserProfile(authState.user);
-      console.log(authState.user.userId.username);
 
       let post = postState.posts.filter((post) => {
         return post.userId.username === authState.user.userId.username;
@@ -442,15 +441,16 @@ function ProfilePage() {
                             </div>
                             <p style={{ color: "gray" }}>
                               {post.userId.username}
-                              <p
+                              <span
                                 style={{
+                                  display:"block",
                                   color: "gray",
                                   fontWeight: "normal",
                                   fontSize: "0.9rem",
                                 }}
                               >
                                 {timeAgo(post.createdAt)}
-                              </p>
+                              </span>
                             </p>
                             <p
                               style={{

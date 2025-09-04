@@ -6,7 +6,6 @@ export const loginUser = createAsyncThunk(
   "user/login",
   async (user, thunkAPI) => {
     try {
-      console.log(user);
       const response = await clientServer.post("/users/login", {
         email: user.email,
         password: user.password,
@@ -53,7 +52,6 @@ export const getAboutUser = createAsyncThunk(
   "user/getAboutUser",
   async (user, thunkAPI) => {
     try {
-      console.log(user);
       const userId = localStorage.getItem("userId");
       if (!userId) {
         return thunkAPI.rejectWithValue("User ID not found");

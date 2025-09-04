@@ -33,8 +33,6 @@ function LoginComponent() {
   }, [userLoginMethod]);
 
   const handleRegister = () => {
-    console.log("registering...");
-
     dispatch(registerUser({ name, email, password, username }));
     setName("");
     setEmail("");
@@ -44,8 +42,6 @@ function LoginComponent() {
   };
 
   const handleLogin = () => {
-    console.log("login....");
-
     dispatch(loginUser({ email, password }));
     setEmail("");
     setPassword("");

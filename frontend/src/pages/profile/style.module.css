@@ -8,7 +8,7 @@
 .backDropContainer {
   width: 100%;
   height:35vh;
-  background-image: url("/images/backDropimg.jpg");
+  background-image: url("/images/backdropimg.jpg");
   background-size: cover;
   object-fit: cover;
   background-repeat: no-repeat;

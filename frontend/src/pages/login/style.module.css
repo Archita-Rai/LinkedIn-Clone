@@ -103,7 +103,7 @@
 }
 @media only screen and (max-width: 1400px) {
   .cardContainer {
-    width: 90vw;
+    width:90vw;
   }
   .inputContainer_name_username {
     width: 90%;
@@ -164,18 +164,27 @@
 @media only screen and (max-width: 500px) {
   .cardContainer {
     width: 90%;
-    height: 95%;
+    height:85%;
+  }
+  .inputContainer{
+    margin-top:1rem;
+  }
+  .cardContainer_left{
+    padding-top: 1.5rem;
+    
   }
   .inputRow {
     width: 88%;
   }
   .inputContainer_name_username {
-    /* background-color: #007bb6; */
     height: 18vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+  }
+  .sign_in_up_btn{
+    margin-top:0.4rem;
   }
 }
 
