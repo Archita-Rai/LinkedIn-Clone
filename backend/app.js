@@ -10,6 +10,7 @@ dotenv.config()
 
 const app = express()
 const URL = process.env.MONGO_URL;
+const PORT = process.env.PORT || 9000;
 
 app.use(cors())
 app.use(express.json());
@@ -28,8 +29,8 @@ async function main() {
   await mongoose.connect(URL);
 }
 
-app.listen(9000,(req,res)=>{
-    console.log("server is running on port 9000");
+app.listen(PORT,(req,res)=>{
+    console.log(`server is running on port ${PORT} `);
 })
 
 
