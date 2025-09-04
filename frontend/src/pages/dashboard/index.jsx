@@ -18,6 +18,7 @@ import DashboardLayout from "@/layout/DashboardLayout";
 import { setIsToken } from "@/config/redux/reducer/authReducer";
 import { BASE_URL } from "@/config";
 import { resetPostId } from "@/config/redux/reducer/postReducer";
+import { timeAgo } from "@/utils/timeAgo";
 
 function DashboardComponent() {
   const router = useRouter();
@@ -59,8 +60,7 @@ function DashboardComponent() {
           <div className={styles.scrollPannel}>
             <div className={styles.wrapper}>
               <div className={styles.createPostContainer}>
-                {console.log(authState.user)
-                }
+                {console.log(authState.user)}
                 <img
                   src={`${BASE_URL}/${authState.user?.userId?.profilePicture}`}
                   className={styles.userProfile}
@@ -117,6 +117,7 @@ function DashboardComponent() {
                           className={styles.userProfilePic}
                           src={`${BASE_URL}/${post.userId.profilePicture}`}
                         />
+
                         <div className={styles.postCardInfo}>
                           <div
                             style={{
@@ -127,6 +128,7 @@ function DashboardComponent() {
                             <p style={{ fontWeight: "bold" }}>
                               {post.userId.name}
                             </p>
+
                             {post.userId._id == authState.user.userId._id && (
                               <div
                                 style={{ cursor: "pointer" }}
@@ -155,6 +157,15 @@ function DashboardComponent() {
                           </div>
                           <p style={{ color: "gray" }}>
                             {post.userId.username}
+                            <p
+                              style={{
+                                color: "gray",
+                                fontWeight: "normal",
+                                fontSize: "0.9rem",
+                              }}
+                            >
+                              {timeAgo(post.createdAt)}
+                            </p>
                           </p>
                           <p
                             style={{
@@ -298,6 +309,16 @@ function DashboardComponent() {
                                   }}
                                 >
                                   {comment.userId.name}
+                                  &nbsp;&nbsp;&nbsp;&nbsp;
+                                  <span
+                                    style={{
+                                      color: "gray",
+                                      fontWeight: "normal",
+                                      fontSize: "0.9rem",
+                                    }}
+                                  >
+                                    {timeAgo(comment.createdAt)}
+                                  </span>
                                 </p>
                                 <p>{comment.userId.username}</p>
                               </div>

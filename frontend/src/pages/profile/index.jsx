@@ -22,7 +22,7 @@ import {
 } from "@/config/redux/action/postAction";
 import { emptyMessage } from "@/config/redux/reducer/authReducer";
 import { resetPostId } from "@/config/redux/reducer/postReducer";
-
+import { timeAgo } from "@/utils/timeAgo";
 
 function ProfilePage() {
   const dispatch = useDispatch();
@@ -232,7 +232,7 @@ function ProfilePage() {
                       <label htmlFor="currentPost">Current Post:</label>
                       <input
                         placeholder="Add your current post"
-                        style={{backgroundColor:"white"}}
+                        style={{ backgroundColor: "white" }}
                         id="currentPost"
                         className={styles.nameEdit}
                         type="text"
@@ -442,6 +442,15 @@ function ProfilePage() {
                             </div>
                             <p style={{ color: "gray" }}>
                               {post.userId.username}
+                              <p
+                                style={{
+                                  color: "gray",
+                                  fontWeight: "normal",
+                                  fontSize: "0.9rem",
+                                }}
+                              >
+                                {timeAgo(post.createdAt)}
+                              </p>
                             </p>
                             <p
                               style={{
@@ -588,8 +597,19 @@ function ProfilePage() {
                                     }}
                                   >
                                     {comment.userId.name}
+                                     &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span
+                                    style={{
+                                      color: "gray",
+                                      fontWeight: "normal",
+                                      fontSize: "0.9rem",
+                                    }}
+                                  >
+                                    {timeAgo(comment.createdAt)}
+                                  </span>
                                   </p>
                                   <p>{comment.userId.username}</p>
+                                  
                                 </div>
                               </div>
                               {comment.userId._id ==
@@ -686,10 +706,9 @@ function ProfilePage() {
                   style={{
                     height: "fit-content",
                     textAlign: "center",
-                    backgroundColor:"white"
+                    backgroundColor: "white",
                   }}
                   className={styles.allCommentsContainer}
-                  
                   onClick={(e) => {
                     e.stopPropagation();
                   }}
@@ -728,7 +747,7 @@ function ProfilePage() {
                           ...userProfile,
                           pastWork: [...userProfile.pastWork, inputData],
                         });
-                        setInputData({company:"",position:"",years:""})
+                        setInputData({ company: "", position: "", years: "" });
                       }
                       setIsWorkModelOpen(false);
                     }}
@@ -792,9 +811,12 @@ function ProfilePage() {
                             educationInputData,
                           ],
                         });
-                        setEducationInputData({school:"",degree:"",fieldOfStudy:""})
+                        setEducationInputData({
+                          school: "",
+                          degree: "",
+                          fieldOfStudy: "",
+                        });
                       }
-                      
 
                       setIsEducationModelOpen(false);
                     }}

@@ -358,11 +358,16 @@
 }
 @media only screen and (max-width: 400px) {
   .singleOption > svg {
-    min-height: 1.3rem;
-    max-height: 1.3rem;
-    min-width: 1.3rem;
+    min-height: 1.1rem;
+    max-height: 1.1rem;
+    min-width: 1.1rem;
   }
     .allCommentsContainer {
     width: 90%;
   }
+ 
+.postCardContainer_profileConatiner{
+  padding-right:0.5rem;
 }
+}
+
