@@ -57,7 +57,7 @@ function LoginComponent() {
             </h2>
             <p
               className={styles.errorMsg}
-              style={{ color: authState.isError ? "red" : "green" }}
+              style={{ color: authState.isError ? "red" : "red" }}
             >
               {" "}
               {authState.message.message}

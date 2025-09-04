@@ -7,6 +7,7 @@ import { getAllUsers } from "@/config/redux/action/authAction";
 import { getAllPosts } from "@/config/redux/action/postAction";
 import Link from "next/link";
 import { BASE_URL } from "@/config";
+import { useAuth } from "@/hooks/useAuth";
 
 function DashboardLayout({ children }) {
   const router = useRouter();
@@ -16,15 +17,25 @@ function DashboardLayout({ children }) {
   useEffect(() => {
     if (
       localStorage.getItem("token") === null ||
-      localStorage.getItem("userId") == null
+      localStorage.getItem("userId") == null 
     ) {
       router.push("/login");
     }
     dispatch(setIsToken());
   }, []);
 
-  useEffect(() => {
-    if (!authState.allProfileFetched) {
+
+  const loading = useAuth();
+
+
+  // useEffect(() => {
+  //   if (!authState.allProfileFetched) {
+  //     dispatch(getAllUsers());
+  //   }
+  // }, []);
+
+    useEffect(() => {
+    if (loading) {
       dispatch(getAllUsers());
     }
   }, []);

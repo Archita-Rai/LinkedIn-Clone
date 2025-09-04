@@ -138,6 +138,27 @@ export const updateUserProfile = async (req, res) => {
   }
 };
 
+export const verifyUserToken  = async (req, res) => {
+  const { token, userId } = req.query;
+  console.log(token,userId)
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "login again" });
+    }
+
+    if (user.token !== token) { // Compare stored token with given token
+      return res.status(401).json({ message: "Invalid token" });
+    }
+
+    return res.json({ message: "Token is valid" });
+  } catch (err) {
+    return res.status(500).json({ message: "Server error" });
+  }
+}
+
 // to get user profile
 export const getUserAndProfile = async (req, res) => {
   try {

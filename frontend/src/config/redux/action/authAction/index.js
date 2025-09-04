@@ -1,4 +1,4 @@
-import { clientServer } from "@/config";
+import { BASE_URL, clientServer } from "@/config";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { connection } from "next/server";
 
@@ -47,6 +47,22 @@ export const registerUser = createAsyncThunk(
     }
   }
 );
+
+export const verifyUserToken = createAsyncThunk("user/verifyUserToken", async({token,userId},thunkAPI)=>{
+  try{
+
+    const response = await clientServer.get("/users/verify-token",{
+      params:{
+         token,userId
+      }
+    })
+
+    return thunkAPI.fulfillWithValue(response.data)
+
+  }catch(error){
+    return thunkAPI.rejectWithValue(error.response.data)
+  }
+})
 
 export const getAboutUser = createAsyncThunk(
   "user/getAboutUser",

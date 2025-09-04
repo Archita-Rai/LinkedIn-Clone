@@ -11,6 +11,7 @@ import {
   getUserProfileBasedOnUserName,
   deleteWorkEntry,
   deleteEducationEntry,
+  verifyUserToken,
 } from "../controllers/user.controller.js";
 import multer from "multer";
 
@@ -32,6 +33,7 @@ const upload = multer({
 router.route("/").get(getAllUserProfile);
 router.route("/register").post(register);
 router.route("/login").post(login);
+router.route("/verify-token").get(verifyUserToken)
 router
   .route("/:id/profile_picture")
   .post(upload.single("profile_picture"), uploadProfilePicture);
